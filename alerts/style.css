@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --big-stone: #1b2b44;
+    --cinzao: #1b1f25;
+    --picton-blue: #24c1eb;
+    --black-squeeze: #edf6f8;
+    --curious-blue: #1d8fc9;
+    --jelly-bean: #266f8d;
+    --raven: #6f7b89;
+    --atoll: #0e527c;
+    --river-bed: #465262;
+    --blumine: #194d6a;
+  }
+
+  * {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--cinzao);
+    color: var(--black-squeeze);
+    padding-top: 70px; /* Adiciona um padding-top igual à altura da navbar */
+}
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1b2b44;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra à navbar */
+    z-index: 1001;
+}
+
+  .logo {
+    display: flex;
+    align-items: center;
+    margin-right: -200px; /* Adicionado margem para separar a logo do formulário */
+  }
+
+  .navbar .logo img {
+    margin-top: 5px;
+  }
+
+  .app-name {
+    margin-left: -150px;
+    font-size: 1.2em;
+  }
+
+  .search-form {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: -10px;
+  }
+
+  .search-form form {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .search-form input[type="text"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    width: calc(100% - 100px); /* Ajuste conforme necessário */
+    max-width: 200px;
+    margin-right: 10px; /* Espaçamento entre o campo de pesquisa e o botão */
+    background-color: #fff;
+    color: #1b2b44;
+  }
+
+  .search-form button {
+    margin-right: 25px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--picton-blue);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .bottom-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #1b2b44;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra ao footer */
+    text-decoration: none;
+  }
+  
+  .bottom-navbar .icon {
+    margin: 0 5px; /* Ajuste as margens horizontalmente */
+    text-decoration: none;
+  }
+  
+  .bottom-navbar .icon i {
+    font-size: 2em; /* Ajuste o tamanho do ícone conforme necessário */
+  }
+  
+  .report-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 100px; /* Espaço para a navbar */
+  }
+
+  .report-box {
+    background-color: #11181d;
+    border: 25px yellow;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    color: var(#fff);
+
+  }
+
+  .report-box h3 {
+    margin-top: 0;
+  }
+
+  .low-credibility {
+    color: red;
+  }
+
+  .medium-credibility {
+    color: yellow;
+  }
+
+  .high-credibility {
+    color: green;
+  }
+
+  @media (max-width: 768px) {
+    .app-name {
+      font-size: 1em;
+    }
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .search-form input[type="text"] {
+      width: calc(100% - 80px); /* Ajuste conforme necessário */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .app-name {
+      font-size: 20px;
+      margin-top: 20px;
+      margin-left: 10px;
+    }
+
+    .navbar {
+      padding: 10px 10px;
+    }
+
+    .logo img {
+      margin-left: -250px;
+      width: 50px;
+    }
+
+    .bottom-navbar .icon {
+      margin: 0 5px;
+      margin-left: 8px;
+    }
+
+    .bottom-navbar .icon i {
+      font-size: 1.5em;
+    }
+  }
+
+  span {
+    margin-top: 10px;
+    margin-left: -20px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.5s forwards;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.5s forwards;
+  }

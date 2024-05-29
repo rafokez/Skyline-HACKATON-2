@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --big-stone: #1b2b44;
+    --cinzao: #1b1f25;
+    --picton-blue: #24c1eb;
+    --black-squeeze: #edf6f8;
+    --curious-blue: #1d8fc9;
+    --jelly-bean: #266f8d;
+    --raven: #6f7b89;
+    --atoll: #0e527c;
+    --river-bed: #465262;
+    --blumine: #194d6a;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--cinzao);
+    color: var(--black-squeeze);
+    padding-top: 70px; /* Adiciona um padding-top igual à altura da navbar */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1b2b44;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra à navbar */
+    z-index: 1001;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: -100px; /* Adicionado margem para separar a logo do formulário */
+}
+
+.navbar .logo img {
+    width: 15%;
+    z-index: 1001;
+    margin-left: 80px;
+    margin-top: 5px;
+}
+
+.app-name {
+    margin-left: -150px;
+    font-size: 1.2e
+}
+
+.text-h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    margin-top: -20px;
+    text-align: center; /* Centraliza o conteúdo dentro do container */
+}
+
+#profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os elementos horizontalmente */
+}
+
+.profile-pic-container {
+    width: 300px; /* Define um tamanho para o container da foto de perfil */
+}
+
+#profile-pic {
+    width: 120px; /* Garante que a foto de perfil ocupe todo o espaço do container */
+    max-width: 200px; /* Define um tamanho máximo para a foto de perfil */
+    border-radius: 50%; /* Deixa a foto de perfil redonda */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Adiciona espaço entre os grupos de formulário */
+}
+
+.form-group label,
+.form-group p {
+    margin: 0; /* Remove margens padrão */
+}
+
+.bottom-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #1b2b44;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra ao footer */
+    text-decoration: none;
+}
+
+.bottom-navbar .icon {
+    margin: 0 5px; /* Ajuste as margens horizontalmente */
+    text-decoration: none;
+}
+
+.bottom-navbar .icon i {
+    font-size: 2em; /* Ajuste o tamanho do ícone conforme necessário */
+}
+
+strong {
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    .app-name {
+        font-size: 20px;
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+
+    .navbar {
+        padding: 10px 10px;
+    }
+
+    .logo img {
+        margin-left: -250px;
+        width: 50px;
+        z-index: 1000;
+    }
+
+    .bottom-navbar .icon {
+        margin: 0 5px;
+        margin-left: 8px;
+    }
+
+    .bottom-navbar .icon i {
+        font-size: 1.5em;
+    }
+}
+
+span {
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center;
+}

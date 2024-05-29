@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="../alerts/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <title>Aplicativo de Problemas na Cidade</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <style>
+    .search-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 40px;
+      margin-left: -20px;
+    }
+
+    .search-icons i {
+      margin: 0 5px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .search-icons i:hover {
+      transform: scale(1.1);
+    }
+
+    .search-icons i::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8em;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .search-icons i:hover::after {
+      opacity: 1;
+    }
+
+    .reset-button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      background-color: #24c1eb;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: fixed;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000; /* Para garantir que o botão fique na frente de outros elementos */
+    }
+
+    .reset-button:hover {
+      background-color: #1d8fc9;
+    }
+
+    #no-incidents-text {
+  display: none;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#no-incidents-text p {
+  margin: 0;
+}
+
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">
+      <img src="../img/logo.png" alt="Logo do Aplicativo" />
+      <h1 class="app-name">Skyline</h1>
+    </div>
+      <span>Escolha o tipo de alert que você deseja ver:</span>
+      <div class="search-icons">
+        <i class="fa-solid fa-car-crash fa-2x" data-tooltip="Acidente" onclick="filterReports('acidente')"></i>
+        <i class="fa-solid fa-road fa-2x" data-tooltip="Trânsito" onclick="filterReports('trânsito')"></i>
+        <i class="fa-solid fa-water fa-2x" data-tooltip="Alagamento" onclick="filterReports('alagamento')"></i>
+      </div>
+  </div>
+
+  <button class="reset-button" onclick="loadReports()">Resetar Pesquisa</button>
+
+  <div class="report-container" id="report-container">
+    <!-- As caixas de relatórios serão adicionadas dinamicamente aqui -->
+  </div>
+
+
+  <div id="no-incidents-text" style="display: none;">
+    <p>Ainda não há incidentes aqui. Experimente <a href="../index.html">criar um</a>.</p>
+  </div>
+
+
+  <div class="bottom-navbar">
+    <div class="icon">
+      <a href="../index.html">
+        <i class="fa-sharp fa-solid fa-map-location-dot fa-2x"></i>
+      </a>
+    </div>
+    <div class="icon">
+      <a href="../alerts/alerts.html">
+        <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
+      </a>
+    </div>
+    <div class="icon">
+      <a href="../sobrenos/sobre.html">
+        <i class="fa-solid fa-info fa-2x"></i>
+      </a>
+    </div>
+    <div class="icon">
+      <a href="../notificacoes/notificacoes.html">
+        <i class="fa-solid fa-bell fa-2x"></i>
+      </a>
+    </div>
+    <div class="icon">
+      <a href="../perfil/configperfil.html">
+        <i class="fa-solid fa-user fa-2x"></i>
+      </a>
+    </div>
+  </div>
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+      document.body.classList.add('fade-in');
+      loadReports(); // Carrega todos os relatórios ao carregar a página inicialmente
+    });
+
+    function loadReports(searchQuery = '') {
+  var storedReports = JSON.parse(localStorage.getItem('reports')) || [];
+  var reportContainer = document.getElementById('report-container');
+  var noIncidentsText = document.getElementById('no-incidents-text');
+
+  // Limpa os relatórios existentes antes de carregar novos relatórios
+  reportContainer.innerHTML = '';
+
+  var hasIncidents = false; // Variável para verificar se há incidentes
+
+  storedReports.forEach(report => {
+    // Verifica se o tipo do relatório corresponde à pesquisa
+    if (searchQuery === '' || report.type.toLowerCase().includes(searchQuery.toLowerCase())) {
+      var reportBox = document.createElement('div');
+      reportBox.classList.add('report-box');
+
+      var credibilityClass;
+      switch (getCredibility(parseLocation(report.location))) {
+        case "Alta":
+          credibilityClass = "high-credibility";
+          break;
+        case "Média":
+          credibilityClass = "medium-credibility";
+          break;
+        case "Baixa":
+          credibilityClass = "low-credibility";
+          break;
+      }
+
+      reportBox.innerHTML = `
+        <h3>${report.type}</h3>
+        <p>${report.description}</p>
+        <p class="${credibilityClass}">Veracidade: ${getCredibility(parseLocation(report.location))}</p>
+      `;
+      reportContainer.appendChild(reportBox);
+
+      hasIncidents = true; // Atualiza a variável para indicar que há incidentes
+    }
+  });
+
+  // Mostra ou oculta o texto de acordo com a presença de incidentes
+  if (hasIncidents) {
+    noIncidentsText.style.display = 'none'; // Oculta o texto se houver incidentes
+  } else {
+    noIncidentsText.style.display = 'block'; // Mostra o texto se não houver incidentes
+  }
+}
+
+    function filterReports(type) {
+      loadReports(type);
+    }
+
+    function parseLocation(locationString) {
+      var coords = locationString.split(',');
+      return { lat: parseFloat(coords[0]), lng: parseFloat(coords[1]) };
+    }
+
+    function getCredibility(location) {
+      var storedReports = JSON.parse(localStorage.getItem('reports')) || [];
+      var credibility = calculateCredibility(location, storedReports);
+      return credibility;
+    }
+
+    function calculateCredibility(location, storedReports) {
+      var nearbyReports = getNearbyReports(location, storedReports);
+      var totalNearbyReports = nearbyReports.length;
+
+      if (totalNearbyReports === 0) return "Baixa";
+      else if (totalNearbyReports === 1) return "Média";
+      else return "Alta";
+    }
+
+    function getNearbyReports(location, storedReports) {
+      var nearbyReports = [];
+
+      storedReports.forEach(report => {
+        var reportLocation = parseLocation(report.location);
+        var distance = getDistance(location, reportLocation);
+        if (distance <= 1) {
+          nearbyReports.push(report);
+        }
+      });
+
+      return nearbyReports;
+    }
+
+    function getDistance(location1, location2) {
+var R = 6371;
+var dLat = (location2.lat - location1.lat) * (Math.PI / 180);
+var dLng = (location2.lng - location1.lng) * (Math.PI / 180);
+var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+Math.cos(location1.lat * (Math.PI / 180)) * Math.cos(location2.lat * (Math.PI / 180)) *
+Math.sin(dLng / 2) * Math.sin(dLng / 2);
+var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+var distance = R * c;
+return distance;
+}
+
+
+
+</script>
+
+</body>
+</html>

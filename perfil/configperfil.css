@@ -1,0 +1,216 @@
+/* styles.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --big-stone: #1b2b44;
+    --cinzao: #1b1f25;
+    --picton-blue: #24c1eb;
+    --black-squeeze: #edf6f8;
+    --curious-blue: #1d8fc9;
+    --jelly-bean: #266f8d;
+    --raven: #6f7b89;
+    --atoll: #0e527c;
+    --river-bed: #465262;
+    --blumine: #194d6a;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1b2b44;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+a {
+    color: inherit;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1b2b44;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra à navbar */
+    z-index: 1001;
+    color: #fff;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: -10px; /* Adicionado margem para separar a logo do formulário */
+}
+
+.navbar .logo img {
+    width: 15%;
+    z-index: 1001;
+    margin-left: 20px;
+    margin-top: -2px;
+}
+
+.app-name {
+    margin-left: -80px;
+    font-size: 1.2e
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 700px;
+    margin: 40;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.profile-pic-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#profile-pic-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-input-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #24c1eb;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.file-input-label:hover {
+    background-color: #0056b3;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #24c1eb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.bottom-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #1b2b44;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra ao footer */
+    text-decoration: none;
+    color: #fff;
+}
+
+.bottom-navbar .icon {
+    margin: 0 5px; /* Ajuste as margens horizontalmente */
+    text-decoration: none;
+}
+
+.bottom-navbar .icon i {
+    font-size: 2em; /* Ajuste o tamanho do ícone conforme necessário */
+}
+
+strong {
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    .app-name {
+        font-size: 20px;
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+
+    .navbar {
+        padding: 10px 10px;
+    }
+
+    .logo img {
+        margin-left: -250px;
+        width: 50px;
+        z-index: 1000;
+    }
+
+    .bottom-navbar .icon {
+        margin: 0 5px;
+        margin-left: 8px;
+    }
+
+    .bottom-navbar .icon i {
+        font-size: 1.5em;
+    }
+}

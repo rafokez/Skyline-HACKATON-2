@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós</title>
+    <link rel="stylesheet" href="sobre.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <style> /* animação, manter fechado */
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00c4ff, 0 0 70px #00c4ff, 0 0 80px #00c4ff, 0 0 100px #00c4ff, 0 0 150px #00c4ff;
+            }
+            50% {
+                text-shadow: none;
+            }
+            100% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00c4ff, 0 0 70px #00c4ff, 0 0 80px #00c4ff, 0 0 100px #00c4ff, 0 0 150px #00c4ff;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(226, 171, 255, 0);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(225, 171, 255, 0.889);
+            }
+            80% {
+                box-shadow: 0 0 0 0 rgba(255, 174, 254, 0.145);
+            }
+        }
+
+        #img1 {
+            animation: pulse 3s infinite;
+        }
+
+        .team-member img {
+            animation: pulse 3s infinite;
+        }
+
+        .glow {
+            animation: glow 4s infinite alternate;
+        }
+
+        .blink {
+            animation: blink 3s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Quem somos?</h1>
+        </header>
+        <section class="intro">
+            <div class="overlay">
+                <div class="content">
+                    <h2 class="glow blink">Equipe Cronos</h2>
+                    <img id="img1" src="logo.png" alt="Imagem da Equipe">
+                    <p>Somos uma empresa dedicada a fornecer os melhores serviços para nossos clientes. 
+                        Nossa missão é entregar qualidade e satisfação em tudo o que fazemos.</p>
+                </div>
+            </div>
+        </section>
+
+        <button id="leave-button" onclick="leavePage()">
+            <i class="fa-solid fa-backward"></i>
+        </button>
+        
+        <section class="team">
+            <h2>Nosso Time</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="vitor.jpg" alt="Vitor Riquelme">
+                    <h3>Vitor Riquelme</h3>
+                    <p>Front-end</p>
+                </div>
+                <div class="team-member">
+                    <img src="shared image.jpg" alt="Lucas Batista">
+                    <h3>Lucas Batista</h3>
+                    <p>Full Stack</p>
+                </div>
+                <div class="team-member">
+                    <img src="fokes 1.jpg" alt="Rafael Almeida">
+                    <h3>Rafael Almeida</h3>
+                    <p>Full Stack</p>
+                </div>
+                <div class="team-member">
+                    <img src="Mídia.jpg" alt="Matheus Almeida">
+                    <h3>Matheus Almeida</h3>
+                    <p>Designer</p>
+                </div>
+                <div class="team-member">
+                    <img src="vier.jpg" alt="Miguel Vieira">
+                    <h3>Miguel Vieira</h3>
+                    <p>Front-end</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 CRONOS. Todos os direitos reservados.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script> 
+
+function leavePage() {
+    window.location.href = "../index.html";
+}
+
+// Configuração do ScrollReveal
+ScrollReveal().reveal('.team-member', {
+    delay: 200,
+    distance: '50px',
+    origin: 'bottom',
+    easing: 'ease-in'
+});
+
+ScrollReveal().reveal('.content', {
+    delay: 200,
+    distance: '50px',
+    origin: 'bottom',
+    easing: 'ease-in'
+});
+
+ScrollReveal().reveal('footer', {
+    delay: 200,
+    distance: '50px',
+    origin: 'bottom',
+    easing: 'ease-in'
+});
+
+</script>

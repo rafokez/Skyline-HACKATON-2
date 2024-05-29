@@ -1,0 +1,179 @@
+/* Reset CSS */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos Gerais */
+body {
+    line-height: 1.6;
+    background-color: #191c26;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.wrapper {
+    flex: 1;
+}
+
+/* Estilo do Cabeçalho */
+header {
+    background-color: #191c26;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Estilo da Seção de Introdução */
+.intro {
+    position: relative;
+    background-image: url('programacao.png');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro .overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro .content {
+    color: white; /* Define a cor do texto */
+    z-index: 1; /* Garante que o texto fique acima da sobreposição */
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.intro .content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.intro .content img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.intro .content p {
+    font-size: 1.2em;
+}
+
+/* Estilo da Seção do Time */
+.team {
+    padding: 40px 20px;
+    background-color: #191c26;
+    text-align: center;
+}
+
+.team h2 {
+    color: #ded0f2;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.team-members {
+    color: #ded0f2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.team-member {
+    color: #ded0f2;
+    margin: 20px;
+    text-align: center;
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+    border: 3px solid #333;
+}
+
+.team-member h3 {
+    color: #ded0f2;
+    margin: 10px 0 5px;
+    font-size: 1.2em;
+}
+
+.team-member p {
+    color: #ded0f2;
+}
+
+#leave-button {
+    position: fixed; /* Torna o botão fixo na tela */
+    bottom: 60px;
+    right: 25px;
+    background-color: #24c1eb;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garante que o botão fique na frente de todos os outros elementos */
+}
+
+#leave-button i {
+    color: white;
+    font-size: 30px;
+}
+
+#leave-button:hover {
+    background-color: var(--picton-blue);
+}
+
+/* Estilo do Rodapé */
+footer {
+    background-color: #ded0f2;
+    color: #4c3c45;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 10px;
+    margin-top: auto;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .intro .content h2 {
+        font-size: 2em;
+    }
+
+    .intro .content p {
+        font-size: 1em;
+    }
+
+    .team-member img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .team h2 {
+        font-size: 1.5em;
+    }
+}

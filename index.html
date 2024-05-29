@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="home/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Aplicativo de Problemas na Cidade</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+
+
+      /* CSS HEX */ 
+      
+      :root {
+      --big-stone: #1b2b44;
+      --cinza-forte: #1b1f25;
+      --picton-blue: #24c1eb;
+      --black-squeeze: #edf6f8;
+      --curious-blue: #1d8fc9;
+      --jelly-bean: #266f8d;
+      --raven: #6f7b89;
+      --atoll: #0e527c;
+      --river-bed: #465262;
+      --blumine: #194d6a;
+    }
+
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+      * {
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      body {
+        background-color: var(--cinza-forte);
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: var(--big-stone);
+        color: var(--black-squeeze);
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #1b2b44;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra à navbar */
+        z-index: 1001;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        margin-right: -200px; /* Adicionado margem para separar a logo do formulário */
+      }
+
+      .navbar .logo img {
+        margin-top: 5px;
+      }
+
+      .app-name {
+        margin-left: -150px;
+        font-size: 1.2em;
+      }
+
+      .search-form {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        margin-left: -10px;
+      }
+
+      .search-form form {
+        display: flex;
+        align-items: center;
+        margin-top: 40px;
+      }
+
+      .search-form input[type="text"] {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 15px;
+        width: calc(100% - 100px); /* Ajuste conforme necessário */
+        max-width: 200px;
+        margin-right: 10px; /* Espaçamento entre o campo de pesquisa e o botão */
+        background-color: #fff;
+        color: #1b2b44;
+      }
+
+      .search-form button {
+        margin-right: 25px;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 15px;
+        background-color: var(--picton-blue);
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .bottom-navbar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #1b2b44;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding: 10px 0;
+        box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra ao footer */
+        text-decoration: none;
+      }
+
+      .bottom-navbar .icon {
+        text-decoration: none;
+      }
+
+      @media (max-width: 768px) {
+        .app-name {
+          font-size: 1em;
+        }
+        .navbar {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .search-form input[type="text"] {
+          width: calc(100% - 80px); /* Ajuste conforme necessário */
+        }
+      }
+
+      @media (max-width: 480px) {
+        .app-name {
+          font-size: 20px;
+          margin-top: 20px;
+          margin-left: 10px;
+        }
+
+        .navbar {
+          padding: 10px 10px;
+        }
+
+        .logo img {
+          margin-left: -250px;
+          width: 50px;
+        }
+
+        .bottom-navbar .icon {
+          margin: 0 5px;
+          margin-left: -32px;
+        }
+
+        .bottom-navbar .icon i {
+          font-size: 1.5em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <img src="../img/logo.png" alt="Logo do Aplicativo" />
+        <h1 class="app-name">Skyline</h1>
+      </div>
+      <div class="search-form">
+          <input type="text" id="location-1" name="location-1" placeholder="Insira um endereço"> 
+          <button onclick="searchAddress()">Buscar</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="report-form" class="report-form">
+        <form id="problem-form">
+          <div class="row">
+            <div class="location-label">
+              <label>Tipo de Problema: </label>
+            </div>
+            <div class="location-input">
+              <select id="problem-type" name="problem-type">
+                <option value="acidente">Acidente</option>
+                <option value="transito">Trânsito</option>
+                <option value="alagamento">Alagamento</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="location-label">
+              <label>Descrição: </label>
+            </div>
+            <div class="location-input">
+              <textarea
+                id="problem-description"
+                name="problem-description"
+                placeholder="Descreva o problema e adicione um endereço. Ex: 'Acidente/Trânsito na Rodovia BR-101'"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="location-label">
+              <label>Localização: </label>
+            </div>
+            <div class="location-input">
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Clique no mapa para definir a localização"
+                readonly
+              />
+              <button type="button" onclick="getLocation()">
+                Usar Localização Atual
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="location-label">
+              <label>Foto: </label>
+            </div>
+            <div class="location-input">
+              <input
+                type="file"
+                id="problem-photo"
+                name="problem-photo"
+                accept="image/*"
+              />
+            </div>
+          </div>
+
+          <div class="row">
+            <button class="button" type="button" onclick="submitReport();">
+              Enviar Relatório
+            </button>
+            <button class="button" type="button" onclick="closeReportForm();">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+
+      
+
+      <div class="container-map" id="google-map-container">
+        <div id="google-map"></div>
+      </div>
+
+      <div class="bem-vindo">
+      <span class="text-bem-vindo">Bem vindo ao <strong> Skyline! </strong></span>
+      </div>
+
+      <div class="conteudo"> 
+        <p class="texto-conteudo"> Eventos em tempo real. </p>
+      </div>
+
+      <div class="bottom-navbar">
+        <div class="icon">
+          <a href="index.html">
+            <i class="fa-sharp fa-solid fa-map-location-dot fa-2x"></i>
+          </a>
+        </div>
+        <div class="icon">
+          <a id="alert-icon" href="alerts/alerts.html">
+            <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
+          </a>
+        </div>
+        <div class="icon">
+          <button id="report-button" onclick="openReportForm()">
+            <i class="fas fa-exclamation-circle"></i>
+        </button>
+          <a href="sobrenos/sobre.html">
+            <i class="fa-solid fa-info fa-2x"></i>
+          </a>
+        </div>
+        <div class="icon">
+          <a href="notificacoes/notificacoes.html">
+            <i class="fa-solid fa-bell fa-2x"></i>
+          </a>
+        </div>
+        <div class="icon">
+          <a href="perfil/configperfil.html">
+            <i class="fa-solid fa-user fa-2x"></i>
+          </a>
+        </div>
+      </div>
+      
+      <script> 
+        document.getElementById('alert-icon').addEventListener('click', function(event) {
+          event.preventDefault(); // Evita o comportamento padrão do link
+          document.body.classList.add('fade-out');
+      
+          setTimeout(function() {
+            window.location.href = 'alerts/alerts.html';
+          }, 500); // Tempo correspondente à duração da animação
+        });
+      
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add('fade-in');
+        });
+      </script> 
+
+  </body>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzwCm0kUdSHDBD7M7jcnmjwGalP2CFqZM&libraries=places"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="home/main.js"></script>
+</html>
+
