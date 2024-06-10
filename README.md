@@ -1,6 +1,6 @@
 # 🌦️ Ferramenta de Contenção de Danos em Mongaguá 🌦️
 
-![Logo do Projeto]([https://github.com/rafokez/Skyline-HACKATON-2/blob/main/img/logo.png](https://github.com/rafokez/Skyline-HACKATON-2/blob/main/Skyline.png?raw=true))
+![Logo do Projeto](https://raw.githubusercontent.com/rafokez/Skyline-HACKATON-2/main/Skyline.png)
 
 Bem-vindo ao projeto ganhador do 3º lugar no Hackaton de 2024 da instituição de ensino Etec Adolpho Berezin. Skyline é um aplicativo de desenvolvimento de uma ferramenta para contenção dos danos causados por problemas climáticos, obras e/ou acidentes na cidade de Mongaguá. Este projeto foi desenvolvido com as tecnologias HTML, CSS e JavaScript.
 
